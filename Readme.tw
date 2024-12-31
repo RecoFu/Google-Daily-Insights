@@ -1,0 +1,159 @@
+GDI (Google Daily Insights) 專業架構設計白皮書 (公益驗證版)
+
+{{架構完整、專業精準的 GDI 白皮書，使其定義清晰、結構流程清楚，並符合極簡化 MVP 的原則。
+GDI (Google Daily Insights) 專業架構設計白皮書 (公益驗證版 - 極簡 MVP)
+1. 概述 (Overview)
+•	產品名稱： GDI (Google Daily Insights)
+•	產品定位： 一款基於 Google Apps Script (GAS) 的極簡個人化資訊儀表板，為使用者提供日常數位足跡的自動化分析和洞察。
+•	版本： 公益驗證版 (極簡 MVP)
+•	核心價值： 透過自動化資料收集、分析和報告生成，協助使用者了解自身行為模式和資訊偏好，無需使用者手動操作，並以開源形式提供。
+•	目標用戶：
+o	對個人數據分析有興趣，並希望快速上手的使用者。
+o	熟悉 Google 服務 (Gmail, Calendar, Google News, etc.) 的使用者。
+o	認同開放原始碼、重視隱私的社群人士。
+•	商業模式： 公益驗證版為開源專案，免費提供。未來付費版本將提供進階功能，以區分免費版和付費版。
+2. 目標 (Objectives)
+•	主要目標： 打造一個開源、免費、易於複製和使用的極簡個人數據分析工具，讓使用者可以快速部署並自動化地了解自己的數位足跡。
+•	次要目標：
+o	快速驗證 GDI 的核心價值，收集使用者回饋。
+o	建立開源社群，讓使用者共同開發和推廣 GDI。
+o	為未來付費版本奠定基礎。
+3. 核心原則 (Core Principles)
+•	自動化優先 (Automation First)：
+o	所有資料收集、分析和報告生成流程均由系統自動完成，無需使用者手動操作，降低使用門檻。
+•	Google 服務整合 (Google Services Integration)：
+o	僅使用 Google App Script 和 Google 相關服務，不使用任何第三方 API 或外部工具，簡化系統架構，降低安全風險。
+•	注重隱私 (Privacy Focused)：
+o	所有資料處理都在 Google App Script 環境中完成，不儲存至外部伺服器，保護使用者隱私。
+o	使用者可自行管理自己的資料。
+•	開源 (Open Source)：
+o	以開放原始碼形式發布，鼓勵社群參與開發和貢獻。
+•	極簡化 (Minimalism):
+o	所有程式碼都放在單一檔案 GDI.gs 中，避免額外設定步驟。
+o	直接使用程式碼內建的設定，或是指令碼屬性。
+o	捨棄GAS UI設定與HTML，降低程式碼複雜度。
+o	專注於核心功能，避免過度設計。
+4. 架構設計 (Architecture Design)
+GDI 的整體架構可分為以下三個主要模組：
+•	4.1. 資料收集模組 (Data Collection Module)
+o	功能： 負責從各個 Google 服務中自動收集資訊。
+o	資料來源：
+	Google News：
+	財經數據 (S&P 500 指數等)。
+	天氣資訊 (使用者所在地點的天氣資訊)。
+	當地新聞 (使用者所在地點的當地新聞)。
+o	Google Trends:
+	當前最熱門關鍵字。
+* Gmail：
+	郵件內容、寄件者、標籤、重要性標記等。
+* Google Calendar：
+	行事曆事件、時間、地點等。
+* Google Tasks：
+	待辦事項清單。
+* Google Keep：
+	記事內容。
+* Google Drive：
+	檔案活動紀錄 (新增,修改,刪除)。
+o	收集方法：
+	使用 Google Apps Script 提供的 API，自動從各個 Google 服務中讀取資料。
+	對於不支援 API 的 Google 服務 (如 Chrome 瀏覽紀錄、YouTube 觀看紀錄)，暫不開發相關功能。
+o	資料儲存：
+	所有收集的資料都暫時儲存在 Google App Script 環境中，不進行永久儲存。
+o	自動化排程：
+	系統每天定時執行資料收集任務，時間由使用者設定 (例如，每天 6, 12, 18, 00 時)。
+•	4.2. 資料處理模組 (Data Processing Module)
+o	功能： 負責分析和處理收集到的資料，提取有意義的洞察。
+o	功能細項：
+	分析 Gmail 郵件內容，識別重要郵件和常用聯絡人，主題。
+	分析 Google Calendar 行事曆事件，識別重要的會議和行程安排。
+	分析 Google Tasks 待辦事項清單。
+	分析 Google Keep 記事內容。
+	分析 Google Drive 檔案活動紀錄。
+•	4.3. 報告生成模組 (Report Generation Module)
+o	功能： 負責根據處理後的資料生成個人化資訊儀表板。
+o	功能細項：
+	將分析結果以清晰易懂的純文字 Markdown 格式呈現。
+	提供個人化的資訊摘要，突顯重要的數據和趨勢。
+	提供行動建議。
+o	輸出格式：
+	精簡產生內容為 utf-8 Markdown 格式，內文使用使用者設定的母語 (如繁體中文)。
+	Google Email 通知：將報告以電子郵件通知使用者。
+	Google Chat 通知：將報告傳送至 Google Chat (未來版本可擴展至其他聊天平台)
+5. 技術架構 (Technical Architecture)
+•	程式語言： Google Apps Script (JavaScript)
+•	開發環境： Google Apps Script 編輯器
+•	資料來源：
+o	Google News API (RSS 訂閱)
+o	Gmail API
+o	Calendar API
+o	Google Tasks API
+o	Google Keep API
+o	Google Trends API
+o	Google Drive API
+•	資料儲存： Google Apps Script 暫存環境
+•	報告格式： utf-8 Markdown
+•	通知方式： Google Email, Google Chat
+•	執行環境： Google Apps Script 環境 (單一檔案 GDI.gs)
+•	設定方式: 程式碼內建設定 或 指令碼屬性 (Script Properties)
+6. 使用者設定 (User Settings)
+•	使用者設定選項，直接在程式碼中定義 USER_SETTINGS 物件 或 使用指令碼屬性(Script Properties)：
+o	報告輸出方式： (目前只有 Email)
+	OUTPUT_METHOD: ['EMAIL', 'CHAT']
+o	資料收集時間： (由使用者指定 4 組時間，例如: 6, 12, 18, 23 時)
+	DATA_COLLECTION_TIMES: ['06:00', '12:00', '18:00', '23:00']
+o	語言： 報告輸出的語言。
+	LANGUAGE: "zh-TW" 或其他語言設定。
+o	位置： 設定天氣與本地新聞的位置資訊。
+	LOCATION: "Taipei" 或其他城市設定。
+•	Google Chat Webhook URL：
+o	CHAT_WEBHOOK_URL: Google Chat 的 Webhook URL (選填)
+* Line Bot 設定 (預留):
+o	LINE_BOT_TOKEN: Line Bot 的 Channel Access Token (選填)。
+* Telegram Bot 設定 (預留):
+o	TELEGRAM_BOT_TOKEN: Telegram Bot Token (選填)。
+* Google Drive 設定:
+o	DRIVE_FOLDER_ID: Google Drive 檔案活動紀錄的監測資料夾 (選填)。
+o	DRIVE_FILE_TYPES: Google Drive 檔案活動紀錄的監測檔案類型 (例如: ["document", "presentation"])。
+* Google Tasks 設定:
+o	TASKS_LIST_ID: Google Tasks 的列表ID (選填，可以讀取所有)。
+* Google Keep 設定:
+o	KEEP_LABELS: Google Keep 的標籤列表(例如: ["工作", "生活"])。
+o	KEEP_ORDER: Google Keep 的記事排序方式(例如:"newest" 或 "oldest")
+7. 核心功能
+•	資料收集 : Google News、Gmail、Google Calendar、Google Trends, Google Tasks, Google Keep, Google Drive 活動。
+•	AI分析 : 根據使用者偏好，分析數據，產生個人化的報告與建議。
+•	報告產生: 產生 utf-8 Markdown 格式的報告，並透過 email 或 Google Chat 推送。
+8. 版本區分 (Version Differentiation)
+(內容與之前相同，省略)
+9. 未來發展策略 (Future Development Strategy)
+(內容與之前相同，省略)
+10. 程式碼結構:
+•	      將所有程式碼都放在單一檔案 `GDI.gs` 中，捨棄其他檔案。
+•	    
+content_copy download 
+Use code with caution.
+•	      設定選項定義在 `USER_SETTINGS` 物件或是「指令碼屬性」。
+•	    
+content_copy download 
+Use code with caution.
+•	使用時間觸發器，或是 GAS 內建選單觸發報告。
+五、程式碼調整 (概要)
+•	單一檔案： 所有程式碼都整合到 GDI.gs 中，移除其他 GAS 檔案。
+•	移除 GAS UI： 捨棄 HtmlService 和相關 UI 程式碼，不再使用 HTML 介面進行設定。
+•	使用程式碼內建設定或指令碼屬性: 將所有設定相關設定，直接定義在 USER_SETTINGS 物件或是使用「指令碼屬性」。
+•	加入 Google Chat 推送：
+o	使用 UrlFetchApp 服務傳送訊息到 Google Chat。
+o	將Google Chat Webhook 設定直接放在設定中。
+•	加入 Google Trends 支援：
+o	使用 UrlFetchApp 讀取 Google Trends API。
+* 加入 Google Tasks 支援： 使用 TasksApp 讀取資料。
+* 加入 Google Keep 支援: 使用 KeepApp 讀取資料。
+* 加入 Google Drive 檔案活動紀錄： 使用 DriveApp 和 DriveActivity 服務讀取檔案活動紀錄。
+•	移除 onOpen 函數: 改用時間觸發執行程式碼。
+六、注意事項 (Important Notes)
+•	機敏資訊： 為了極簡化，機敏資訊 (例如 API 金鑰、Token) 直接寫在程式碼內或指令碼屬性中，有安全風險，請謹慎使用。
+•	測試： 由於沒有UI介面，需透過 Logger.log 或 Google Keep 來輔助測試與除錯。
+•	權限管理： GAS專案的權限仍需妥善管理。
+•	極簡化: 此版本為極簡化版本，僅供快速驗證使用，未來請務必將設定與程式碼分離。
+七、總結 (Conclusion)
+此版本 GDI (Google Daily Insights) 專注於極簡化，所有程式碼都在單一檔案中，並透過程式碼內建設定或指令碼屬性設定，沒有繁瑣的 UI 介面，方便快速部署。同時，也兼具基本的核心功能，方便驗證。

@@ -93,6 +93,7 @@
 2.  Copy and paste the GDI code into the project.
 3.  Configure the project settings and API keys as instructed in the code comments.
 4.  Set up a time-based trigger to run the script automatically.
+安裝：
 * 建立一個新的 Google Apps Script 專案。
 * 將 GDI 程式碼複製並貼上到專案中。
 * 根據程式碼註釋中的說明設定專案設定和 API 金鑰。
@@ -102,10 +103,11 @@
 *   Follow the project's coding style and best practices.
 *   Submit bug reports and feature requests through the issue tracker.
 *   Contribute code through pull requests with clear descriptions of changes.
+協作：
 * 遵循專案的程式碼風格和最佳實務。
 * 透過問題追蹤器提交錯誤報告和功能請求。
 * 透過拉取請求貢獻程式碼，並清楚說明變更。
 
 ## 結語
-GDI is committed to becoming an indispensable tool in individuals' digital lives, helping them manage information more effectively, make informed decisions, and continue to grow personally. We believe that through the power of open source and the joint efforts of the community, GDI can continue to evolve and meet the growing needs of users.
-GDI 致力於成為個人數位生活中不可或缺的工具，協助使用者更有效地管理資訊、做出明智的決策，並持續自我成長。 我們相信透過開源的力量和社群的共同努力，GDI 能夠不斷進化，滿足使用者日益增長的需求。
+* GDI is committed to becoming an indispensable tool in individuals' digital lives, helping them manage information more effectively, make informed decisions, and continue to grow personally. We believe that through the power of open source and the joint efforts of the community, GDI can continue to evolve and meet the growing needs of users.
+* GDI 致力於成為個人數位生活中不可或缺的工具，協助使用者更有效地管理資訊、做出明智的決策，並持續自我成長。 我們相信透過開源的力量和社群的共同努力，GDI 能夠不斷進化，滿足使用者日益增長的需求。

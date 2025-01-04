@@ -1,78 +1,133 @@
-### GDI (Google Daily Insights) Professional Architecture Whitepaper (Public Edition)
+GDI (Google Daily Insights) - Public Share Edition 🚀
 
-1. **Overview**:
-   GDI (Google Daily Insights) is a personalized information dashboard based on Google App Script (GAS), designed to help users understand their behavior patterns and information preferences. GDI adheres to principles of automation, privacy, and integration with Google services, automatically collecting, analyzing, and presenting personal data to provide users with objective insights without any user interaction.
+### **Project Vision:**
 
-2. **Objective**:
-   The objective of GDI is to create a seamless personal data analysis tool that allows users to gain deep insights into their digital footprint effortlessly. By automatically collecting and analyzing data from Google services, GDI aims to reveal users' behavior patterns and information preferences and present these insights in an easy-to-understand dashboard format.
+*   **Empower individuals with automated, personalized insights from their digital footprint.**
+*   **Drive self-growth and informed decision-making through actionable recommendations.**
+*   **Foster an open-source community for collaborative development and innovation.**
 
-3. **Core Principles**:
-   - **Automation First**: All data collection and analysis processes are completed automatically by the system, requiring no manual operation by the user.
-   - **Google Services Integration**: Uses only Google App Script and related Google services, without relying on any third-party APIs or external tools.
-   - **Privacy Focused**: All data processing is done within the Google App Script environment, without storing data on external servers, ensuring data security.
+*   **賦予個人從其數位足跡中獲得自動化、個人化洞察的能力。 通過可操作的建議，推動自我成長和明智的決策。 培養一個開源社區，以促進協作開發和創新。**
 
-4. **Functional Modules**:
-   GDI consists of the following functional modules, each responsible for specific data processing tasks:
+###  **Key Features & Competitive Advantages:**
 
-   - **Data Collection Module**: Responsible for automatically collecting information from various Google services.
-     - **Data Sources**:
-       - Financial Data: Queries financial data such as the S&P 500 index from Google News.
-       - Weather Information: Queries weather information for the user's location from Google News.
-       - Local News: Queries local news for the user's location from Google News.
-       - Gmail: Email content, sender, labels, importance markings, etc.
-       - Google Calendar: Calendar events, times, locations, etc.
-       - Google Chrome Browsing History: Web links, titles, times, etc.
-       - YouTube Watch History: Video links, titles, times, etc.
-       - Google Maps: User location, routes, etc.
-       - Google Fit: Steps, sleep, heart rate, and other health data.
-       - Google: Security usage status of the Google account (unsafe authorizations, links, resource usage/remaining capacity in GB, etc.).
-       - Feedly RSS: Subscribed RSS content.
-     - **Collection Methods**:
-       - Uses APIs provided by Google App Script to automatically read data from various Google services.
-       - For Google services that do not support APIs (such as Chrome browsing history and YouTube watch history), offers optional data import functions for users:
-         - Users can export related data themselves and upload it to a designated Google Drive folder, which the system then automatically reads and processes.
-       - Does not develop any Chrome extensions or store users' browsing history and YouTube watch history on Google Drive for system reading and analysis.
-       - Does not use web crawlers to collect external information, such as querying S&P 500 index and weather information on weather.com.
-     - **Data Storage**: All collected data is temporarily stored in the Google App Script environment without permanent storage.
-     - **Automated Scheduling**: The system automatically executes data collection tasks at scheduled times set by the user (e.g., 6 AM, 12 PM, 6 PM, 12 AM daily).
+*   **Automated Data Integration:** Seamlessly gathers data from various Google services and external sources.
 
-   - **Data Processing Module**: Responsible for analyzing and processing collected data to extract meaningful insights.
-     - **Functions**:
-       - Analyzes Gmail email content, identifying important emails and frequent contacts and topics.
-       - Analyzes Google Calendar events, identifying important meetings and schedules.
-       - Analyzes Google Chrome browsing history, identifying frequently visited websites and topics.
-       - Analyzes YouTube watch history, identifying frequently watched channels and topics.
-       - Analyzes Google Maps data, identifying frequently visited locations and routes.
-       - Analyzes Google Fit health data, identifying health trends.
-       - Analyzes the security usage status of the Google account (unsafe authorizations, links, resource usage/remaining capacity in GB, etc.).
-       - Analyzes Feedly RSS content, identifying important news and articles.
+    *   Google Services: Gmail, Calendar, Drive, YouTube, Location History, etc.
+    *   External Sources: Feedly, News websites, Financial data, etc.
+    *   自動資料整合：無縫地從各種 Google 服務和外部來源收集資料。
 
-   - **Report Generation Module**: Responsible for generating a personalized information dashboard based on processed data.
-     - **Functions**:
-       - Presents analysis results in clear and understandable charts, tables, text, etc.
-       - Provides personalized information summaries, highlighting important data and trends.
-       - Offers personalized suggestions and reminders based on user data.
-     - **Output Format**:
-       - Generates content in UTF-8 markdown format, using the user's preferred language (e.g., Traditional Chinese).
-       - Sends Google Email notifications.
+*   **AI-Powered Analysis:** Leverages Google Gemini AI for advanced analysis, including:
 
-   - **Review and Optimization**: Regularly reviews the overall architecture and simplifies and optimizes the efficiency of all modules.
+    *   Email summarization and prioritization
+    *   Calendar event analysis and scheduling optimization
+    *   Content filtering and personalized recommendations
+    *   人工智慧驅動的分析：利用 Google Gemini AI 進行進階分析，包括：電子郵件摘要和優先順序排序、日曆事件分析和排程優化、內容過濾和個人化推薦。
 
-5. **User Settings**:
-   GDI provides the following user setting options to allow customization of system behavior:
-   ```javascript
-   /**
-    * User Settings
-    * Modify the following settings according to your needs.
-    */
-   const USER_SETTINGS = {
-     // Gmail address using the current account address
-     // Report output method: 'EMAIL'
-     OUTPUT_METHOD: 'EMAIL',
-     // Data collection times: specified by the user (4 slots) or set in the Google App Script project,
-     DATA_COLLECTION_TIMES: ['06:00', '12:00', '18:00', '00:00'],
-   };
-   ```
+*   **Actionable Insights & Recommendations:** Provides personalized daily reports and actionable suggestions based on user preferences and data analysis.
+    *   可操作的洞察和建議：根據使用者偏好和資料分析，提供個人化的每日報告和可操作的建議。
 
-6. **Notes**:
-   - Fully leverage Google's free architecture and services, and simplify settings such as not requiring the user to input their Gmail address in the code, using the current account email directly.
+*   **Privacy & Security:**
+
+    *   No data storage on external servers.
+    *   All data processing done locally within the user's Google account.
+    *   隱私和安全：不將資料儲存在外部伺服器上。所有資料處理都在使用者 Google 帳戶內本地完成。
+
+*   **Open-Source Collaboration:** Encourages community contributions to expand features and functionality.
+    *   開源協作：鼓勵社區貢獻，以擴展特性和功能。
+
+### **Target Audience:**
+
+*   Information workers seeking to boost productivity and decision-making.
+*   Individuals passionate about personal growth and self-optimization.
+*   Tech-savvy users comfortable with Google services and App Script.
+*   **目標受眾：希望提高生產力和決策能力的資訊工作者。熱衷於個人成長和自我優化的個人。精通 Google 服務和 App Script 的科技愛好者。**
+
+### **Architecture Overview:**
+
+**Modules:**
+
+*   **Data Collection Module:** Gathers data from various sources through authorized APIs.
+    *資料收集模組：透過授權的 API 從各種來源收集資料。
+
+*   **Data Processing Module:**  Filters, cleans, and categorizes collected data.
+    *資料處理模組：過濾、清理和分類收集到的資料。
+
+*   **AI Analysis Module:**  Analyzes processed data using Google Gemini AI.
+    *人工智慧分析模組：使用 Google Gemini AI 分析處理後的資料。
+
+*   **Report Generation Module:** Creates personalized reports in Markdown format.
+    *報告生成模組：以 Markdown 格式建立個人化報告。)
+
+*   **Notification Module:** Sends reports via Gmail and other communication channels.
+    *通知模組：透過 Gmail 和其他通訊管道傳送報告。
+
+###  **Development Roadmap (Minimum Viable Product):**
+
+**Phase 1: Core Functionality**
+
+*   Establish data collection from Gmail, Calendar, and Google News.
+*   Implement basic AI analysis for email summarization and event prioritization.
+*   Generate daily reports and send via Gmail.
+
+*   階段 1：核心功能\
+    * 建立從 Gmail、日曆和 Google 新聞收集資料的功能。\
+    * 為電子郵件摘要和事件優先順序排序實作基本的人工智慧分析。\
+    * 生成每日報告並透過 Gmail 傳送。
+
+**Phase 2: Advanced Features & Personalization**
+
+*   Integrate more data sources, including YouTube, Drive, and Feedly.
+*   Expand AI analysis capabilities for personalized recommendations and insights.
+*   Enable user customization of report content and notification settings.
+
+*   階段 2：進階功能和個人化\
+    * 整合更多資料來源，包括 YouTube、雲端硬碟和 Feedly。\
+    * 擴展人工智慧分析功能，以提供個人化的推薦和洞察。\
+    * 允許使用者自訂報告內容和通知設定。
+
+**Phase 3: Open Source & Community Building**
+
+*   Release GDI as an open-source project on a platform like GitHub.
+*   Foster community contributions for new features, integrations, and language support.
+*   階段 3：開源和社群建立\
+    * 在 GitHub 等平台上將 GDI 作為開源專案發佈。\
+    * 促進社群為新功能、整合和語言支援做出貢獻。
+
+### **Technology Stack:**
+
+*   Google Apps Script (JavaScript)
+*   Google Gemini AI API
+*   Google Services APIs (Gmail, Calendar, Drive, YouTube, etc.)
+*   External APIs (Feedly, News websites, Financial data, etc.)
+
+### **Installation & Setup:**
+
+1.  Create a new Google Apps Script project.
+2.  Copy and paste the GDI code into the project.
+3.  Configure the project settings and API keys as instructed in the code comments.
+4.  Set up a time-based trigger to run the script automatically.
+
+* 建立一個新的 Google Apps Script 專案。\
+* 將 GDI 程式碼複製並貼上到專案中。\
+* 根據程式碼註釋中的說明設定專案設定和 API 金鑰。\
+* 設定基於時間的觸發器以自動執行指令碼。
+
+### **Contribution Guidelines:**
+
+*   Follow the project's coding style and best practices.
+*   Submit bug reports and feature requests through the issue tracker.
+*   Contribute code through pull requests with clear descriptions of changes.
+
+* 遵循專案的程式碼風格和最佳實務。\
+* 透過問題追蹤器提交錯誤報告和功能請求。\
+* 透過拉取請求貢獻程式碼，並清楚說明變更。
+
+###  **Contact:**
+
+For questions or feedback, please contact reco@outlook.com. 
+如有任何問題或建議，請聯絡 reco@outlook.com.
+
+## 結語
+
+GDI is committed to becoming an indispensable tool in individuals' digital lives, helping them manage information more effectively, make informed decisions, and continue to grow personally. We believe that through the power of open source and the joint efforts of the community, GDI can continue to evolve and meet the growing needs of users.
+GDI 致力於成為個人數位生活中不可或缺的工具，協助使用者更有效地管理資訊、做出明智的決策，並持續自我成長。 我們相信透過開源的力量和社群的共同努力，GDI 能夠不斷進化，滿足使用者日益增長的需求。

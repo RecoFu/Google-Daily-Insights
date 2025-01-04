@@ -89,10 +89,10 @@
 *   External APIs (Feedly, News websites, Financial data, etc.)
 
 ### **Installation & Setup:**
-1.  Create a new Google Apps Script project.
-2.  Copy and paste the GDI code into the project.
-3.  Configure the project settings and API keys as instructed in the code comments.
-4.  Set up a time-based trigger to run the script automatically.
+*   Create a new Google Apps Script project.
+*   Copy and paste the GDI code into the project.
+*   Configure the project settings and API keys as instructed in the code comments.
+*   Set up a time-based trigger to run the script automatically.
 * 安裝：
 * 建立一個新的 Google Apps Script 專案。
 * 將 GDI 程式碼複製並貼上到專案中。

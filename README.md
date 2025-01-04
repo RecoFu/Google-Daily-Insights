@@ -1,4 +1,4 @@
-GDI (Google Daily Insights) - Public Share Edition 🚀
+**GDI (Google Daily Insights) - Public Share Edition 🚀**
 
 ### **Project Vision:**
 
